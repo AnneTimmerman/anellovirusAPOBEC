@@ -1,0 +1,19 @@
+#!/bin/bash
+for file1 in ~/Context/*reference.fasta 
+do
+	out=${file1/reference.fasta/output.txt}
+	line1=''
+	line2=''
+
+	line1=$(sed -n  '2p' $file1)
+	 
+	for ((i=5;i<${#line1}-5;i++)) 
+	do
+		let ii=i+1
+		
+		if [[ ${line1:$i:1} == "C" ]] 
+		then
+            echo "$ii,${line1:$i-5:11}" >> "$out"
+        fi
+    done
+done

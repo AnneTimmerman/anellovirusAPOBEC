@@ -1,0 +1,23 @@
+#!/bin/bash
+for file1 in ~/Context/*edited.fasta 
+do
+	file2="TEST_reference.fasta"
+	out=${file1/edited.fasta/output.txt}
+	line1=''
+	line2=''
+
+	line1=$(sed -n  '2p' $file1)
+          
+	line2=$(sed -n  '2p' $file2)
+    
+	 
+	for ((i=5;i<${#line1}-5;i++)) 
+	do
+		let ii=i+1
+		
+		if [[ ${line2:$i:1} == "C" ]] && [[ ${line1:$i:1} == "T" ]] 
+		then
+            echo "$ii,${line2:$i-5:11}" >> "$out"
+        fi
+    done
+done
