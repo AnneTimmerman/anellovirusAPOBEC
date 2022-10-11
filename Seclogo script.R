@@ -10,13 +10,13 @@ library(readxl)
 
 ###import excel file containing a sequence list and combine the genera specific data
 TTV_data <- read_excel("TTV.xlsx")
-list1 <- list("TTV"=TTV_data$TTV_minusstrand)
+list1 <- list("TTV"=TTV_data$TTV)
 
 TTMV_data <- read_excel("TTMV.xlsx")
-list2 <- list("TTMV"=TTMV_data$TTMV_minusstrand)
+list2 <- list("TTMV"=TTMV_data$TTMV)
 
 TTMDV_data <- read_excel("TTMDV.xlsx")
-list3 <- list("TTMDV"=TTMDV_data$TTMDV_minusstrand)
+list3 <- list("TTMDV"=TTMDV_data$TTMDV)
 
 list4 <- c(list1, list2, list3) 
 View(list4)
@@ -28,8 +28,8 @@ ggseqlogo(data=list4, method='prob', ncol=1, nrow=4, seq_type="dna")  + #combini
   theme(plot.title = element_text(size = 14, hjust = 0.5, face="bold"), #change sizes
         axis.text = element_text(size = 10), axis.title.y = element_text(size=14), panel.spacing.y = unit(20, "pt")) #change sizes
 
-ggsave("nt_context_ALL_reverse.svg", width=5, height=8)
-ggsave("nt_context_ALL_reverse.tiff", width=5, height=8)
+ggsave("nt_context.svg", width=5, height=8)
+ggsave("nt_context.tiff", width=5, height=8)
 
 
 
